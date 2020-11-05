@@ -30,7 +30,7 @@ def prepare_message(name, body):
     print(body)
     message.attach(MIMEText(body, "plain"))
 
-    filename = "movemee-incident-report.xlsx"  # In same directory as script
+    filename = "attachement.txt"  # In same directory as script
 
     # Open PDF file in binary mode
     with open(filename, "rb") as attachment:
@@ -55,7 +55,7 @@ def prepare_message(name, body):
 
 # Log in to server using secure context and send email
 context = ssl.create_default_context()
-with smtplib.SMTP_SSL("smtp.mailbox.org", 465, context=context) as server:
+with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
     server.login(sender_email, password)
     with open("contacts.csv") as file:
         reader = csv.reader(file)
